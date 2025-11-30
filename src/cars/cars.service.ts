@@ -28,4 +28,10 @@ export class CarsService {
     if (!car) throw new BadRequestException(`Car with id ${id} not found`);
     return car;
   }
+  createUser(data: Record<string, any>) {
+    this.cars.push(body);
+  }
+  updateUser(id: number, data: Record<string, any>) {}
+
+  delete(id: number) {}
 }
