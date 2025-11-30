@@ -1,20 +1,21 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-
+import { Car } from './interfaces/cars.interface';
+import { v4 as uuid } from 'uuid';
 @Injectable()
 export class CarsService {
-  private cars = [
+  private cars: Car[] = [
     {
-      id: 1,
+      id: uuid(),
       brand: 'Toyota',
       model: 'Corolla',
     },
     {
-      id: 2,
+      id: uuid(),
       brand: 'Honda',
       model: 'Civic',
     },
     {
-      id: 3,
+      id: uuid(),
       brand: 'Jeep',
       model: 'Cherokee',
     },
@@ -23,15 +24,15 @@ export class CarsService {
   findAll() {
     return this.cars;
   }
-  findById(id: number) {
+  findById(id: string) {
     const car = this.cars.find((car) => car.id === id);
     if (!car) throw new BadRequestException(`Car with id ${id} not found`);
     return car;
   }
   createUser(data: Record<string, any>) {
-    this.cars.push(body);
+    //this.cars.push(body);
   }
-  updateUser(id: number, data: Record<string, any>) {}
+  updateUser(id: string, data: Record<string, any>) {}
 
-  delete(id: number) {}
+  delete(id: string) {}
 }
